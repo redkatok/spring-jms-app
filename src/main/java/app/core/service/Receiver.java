@@ -19,21 +19,21 @@ public class Receiver {
         System.out.println("Recieves <" + email + ">");
     }
 
-    @JmsListener(destination = "inbound.queu",containerFactory = "containerFactory")
-    @SendTo("outbound.queue")
-    public String receiveMessageInboundQueu(final Message jsonMessage) throws JMSException {
-        String messageData = null;
-        System.out.println("Received message " + jsonMessage);
-        String response = null;
-        if(jsonMessage instanceof TextMessage) {
-            TextMessage textMessage = (TextMessage)jsonMessage;
-            messageData = textMessage.getText();
-            Map map = new Gson().fromJson(messageData, Map.class);
-            response  = "Hello " + map.get("name");
-        }
-        return response;
-
-    }
+//    @JmsListener(destination = "inbound.queu",containerFactory = "containerFactory")
+//    @SendTo("outbound.queue")
+//    public String receiveMessageInboundQueu(final Message jsonMessage) throws JMSException {
+//        String messageData = null;
+//        System.out.println("Received message " + jsonMessage);
+//        String response = null;
+//        if(jsonMessage instanceof TextMessage) {
+//            TextMessage textMessage = (TextMessage)jsonMessage;
+//            messageData = textMessage.getText();
+//            Map map = new Gson().fromJson(messageData, Map.class);
+//            response  = "Hello " + map.get("name");
+//        }
+//        return response;
+//
+//    }
 
 
 }
